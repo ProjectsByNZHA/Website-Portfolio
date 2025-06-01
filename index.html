@@ -1,0 +1,268 @@
+<!-- File: index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio - Nurul Azizah</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <!-- Site CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Header / Navigation -->
+  <header class="header">
+    <div class="container nav-container">
+      <a href="#" class="logo"><img src="assets/logoo.png" alt="Logo"></a>
+
+      <!-- tombol hamburger -->
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <nav class="nav">
+        <ul>
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#work">Work</a></li>
+          <li><a href="#interest">Interest</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="container hero-container">
+        <div class="hero-image">
+          <div class="image-bg-circle"></div>
+          <img src="assets/NurulAzizah.png" alt="Nurul Azizah">
+          <div class="clients-badge">Odoo Developer Intern</div>
+        </div>
+        <div class="hero-text">
+          <p>Hello, I Am</p>
+          <h1>Nurul Azizah</h1>
+          <h2 class="typing-container">
+            <span id="typing-text"></span><span class="cursor">|</span>
+          </h2>
+          <div class="hero-actions">
+            <a href="#contact" class="cta-button">Hire Me</a>
+            <a href="#work" class="cta-button btn-outline">See My Work</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about-section">
+      <div class="about-container">
+        <section class="about-summary">
+          <h2>About Me</h2>
+          <p>A 6th-semester Informatics student at Multimedia Nusantara University, with internship experience as a 
+            Software Developer focusing on ERP development using Odoo Version 15 and Version 18. Experienced in 
+            UI/UX Design, as well as web and mobile application development. Highly interested in software 
+            engineering and team collaboration. Skilled in time management, teamwork, creativity, and problem-solving, 
+            with a focus on delivering innovative technology solutions.</p>
+        </section>
+      </div>    
+      <section id="work" class="odoo-modules-section">
+        <h3 class="section-title">My Odoo Custom Modules</h3>
+
+        <div class="carousel-wrapper">
+          <div class="carousel">
+            <div class="carousel-slide active">
+              <h4>Price Approval Module</h4>
+              <p>Manage price approval process for products.</p>
+              <div class="module-images">
+                <img src="assets/pc5.png" alt="Module 1 Image 1" />
+                <img src="assets/pc6.png" alt="Module 1 Image 2" />
+              </div>
+            </div>
+            <div class="carousel-slide">
+              <h4>Custom Pareto Module</h4>
+              <p>Add Pareto field to Product, Replenishment, RFQ/PO, and POS report.</p>
+              <div class="module-images">
+                <img src="assets/pr1.png" alt="Module 2 Image 1" />
+                <img src="assets/pr4.png" alt="Module 2 Image 2" />
+              </div>
+            </div>
+            <div class="carousel-slide">
+              <h4>Custom Delivery Address</h4>
+              <p>Extension to add additional addresses to the customer form and integrate them with SO, DO, and Delivery Slip.</p>
+              <div class="module-images">
+                <img src="assets/ct1.png" alt="Module 3 Image 1" />
+                <img src="assets/ct2.png" alt="Module 3 Image 2" />
+              </div>
+            </div>
+            <!-- Tambahkan slide lain sesuai jumlah modul -->
+          </div>
+
+          <!-- Tombol navigasi di kiri dan kanan -->
+          <button class="carousel-btn prev" id="prevBtn">&#10094;</button>
+          <button class="carousel-btn next" id="nextBtn">&#10095;</button>
+        </div>
+      </section>
+
+      <!-- Modal for image preview -->
+      <div class="modal" id="imageModal">
+        <span class="close" id="closeModal">&times;</span>
+        <img class="modal-content" id="modalImg" alt="Preview" />
+      </div>
+
+
+      <section id="interest" class="interest-section">
+        <div class="interest-container">
+          <h3 class="section-title">Interest</h3>
+            <div class="interest-grid">
+              <div class="interest-item">
+                <i class="fas fa-code fa-2x"></i>
+                <h3>Software Engineering</h3>
+                <p>Turning ideas into well-functioning and usable applications.</p>
+              </div>
+              <div class="interest-item">
+                <i class="fas fa-mobile-alt fa-2x"></i>
+                <h3>Web & Mobile Development</h3>
+                <p>Building responsive and functional user interfaces and features.</p>
+              </div>
+              <div class="interest-item">
+                <i class="fas fa-pencil-ruler fa-2x"></i>
+                <h3>UI/UX Design</h3>
+                <p>Designing intuitive and visually engaging user experiences.</p>
+              </div>
+              <div class="interest-item">
+                <i class="fas fa-cogs fa-2x"></i>
+                <h3>ERP Customization</h3>
+                <p>Customizing Odoo systems to meet specific business needs efficiently.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="soft-skills">
+            <h3>Soft Skills</h3>
+              <ul>
+                <li>Creativity</li>
+                <li>Teamwork</li>
+                <li>Communication</li>
+                <li>Problem Solving</li>
+                <li>Time Management</li>
+                <li>Detail-Oriented</li>
+                <li>Adaptability</li>
+              </ul>
+            </div>
+        </div>
+      </section>
+    </section>
+
+    <section id="skills" class="skills">
+      <div class="container">
+        <h2>Tools & Programming Languages</h2>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <i class="fas fa-code fa-2x"></i>
+            <p>Visual Studio Code</p>
+          </div>
+          <div class="skill-card">
+            <i class="fas fa-circle-notch fa-2x"></i>
+            <p>Odoo</p>
+          </div>
+          <div class="skill-card">
+            <i class="fas fa-mobile-alt fa-2x"></i>
+            <p>Android Studio</p>
+          </div>
+          <div class="skill-card">
+            <i class="fas fa-book fa-2x"></i>
+            <p>Jupyter Notebook</p>
+          </div>
+          <div class="skill-card">
+            <i class="fas fa-file-alt fa-2x"></i>
+            <p>Microsoft Office</p>
+          </div>
+          <div class="skill-card">
+            <i class="fab fa-github fa-2x"></i>
+            <p>GitHub</p>
+          </div>
+          <div class="skill-card">
+            <i class="fab fa-figma fa-2x"></i>
+            <p>Figma</p>
+          </div>
+          <div class="skill-card">
+            <i class="fas fa-paint-brush fa-2x"></i>
+            <p>Canva</p>
+          </div>
+          <div class="skill-card">
+            <i class="fas fa-cube fa-2x"></i>
+            <p>Unity</p>
+          </div>
+          <div class="skill-card">
+            <i class="fab fa-python fa-2x"></i>
+            <p>Python</p>
+          </div>
+          <div class="skill-card">
+            <i class="fas fa-code fa-2x"></i>
+            <p>XML</p>
+          </div>
+          <div class="skill-card">
+            <i class="fas fa-mobile-alt fa-2x"></i>
+            <p>Kotlin</p>
+          </div>
+          <div class="skill-card">
+            <i class="fab fa-js-square fa-2x"></i>
+            <p>JavaScript</p>
+          </div>
+          <div class="skill-card">
+            <i class="fas fa-database fa-2x"></i>
+            <p>SQL</p>
+          </div>
+          <div class="skill-card">
+            <i class="fab fa-php fa-2x"></i>
+            <p>PHP</p>
+          </div>
+          <div class="skill-card">
+            <i class="fab fa-html5 fa-2x"></i>
+            <p>HTML</p>
+          </div>
+          <div class="skill-card">
+            <i class="fab fa-css3-alt fa-2x"></i>
+            <p>CSS</p>
+          </div>
+          <div class="skill-card">
+            <i class="fas fa-terminal fa-2x"></i>
+            <p>C#</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-about">
+        <h4>About Me</h4>
+        <p>An undergraduate Informatics student at Multimedia Nusantara University.</p>
+      </div>
+      <div class="footer-social">
+        <h4>Connect</h4>
+        <a href="https://github.com/ProjectsByNZHA"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/nurul-azizah01/"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.instagram.com/n.zzhaa?igsh=MW85d3RhNG1oNHZr"><i class="fab fa-instagram"></i></a>
+      </div>
+      <div class="footer-contact" id="contact">
+        <h4>Contact</h4>
+        <p>Email: <a href="mailto:nrllazizah02@gmail.com">nrllazizah02@gmail.com</a></p>
+        <p>Phone: <a href="tel:+6285664536255">0856-6453-6255</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Site JS -->
+  <script src="main.js"></script>
+</body>
+</html>

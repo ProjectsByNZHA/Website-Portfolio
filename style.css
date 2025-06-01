@@ -1,0 +1,1012 @@
+/* ===========================================================================
+   Reset & Base
+   =========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  /* Hilangkan scroll horizontal yang tidak diinginkan */
+  overflow-x: hidden;
+  width: 100%;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #1B005F;
+  color: #FFF;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Container umum: Lebar 100%, max-width 1200px, padding kiri-kanan 1rem */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Tombol dasar (jika dipakai) */
+.btn {
+  display: inline-block;
+  border-radius: 30px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+
+/* ===========================================================================
+   Header / Navigation
+   =========================================================================== */
+/* 1. Struktur Dasar Header */
+.header {
+  background: #1B005F;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+}
+
+/* 2. Isi nav-container: flex row, posisi relative agar dropdown absolute */
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  position: relative;
+}
+
+/* 3. Logo */
+.logo img {
+  height: 40px;
+  max-width: 100%;
+}
+
+/* 4. Tombol Hamburger (Mobile) */
+/*    Default disembunyikan, muncul di ≤ 768px */
+.nav-toggle {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: #FFF;
+  cursor: pointer;
+  z-index: 12; /* di atas dropdown menu */
+}
+
+.nav-toggle i {
+  margin-left: 0.25rem;
+}
+
+/* 5. Menu Navigasi (Desktop) */
+/*    <nav> akan disembunyikan di mobile lewat media query */
+.nav {
+  position: relative;
+  width: auto;
+}
+
+.nav ul {
+  list-style: none;
+  display: flex; /* horizontal di desktop */
+  gap: 2rem;
+}
+
+.nav ul li a {
+  color: #FFF;
+  font-weight: 500;
+  display: block;
+  padding: 0.5rem 0; /* area klik lebih luas */
+}
+
+.nav ul li a.active,
+.nav ul li a:hover {
+  color: #FFC43D;
+}
+
+/* 6. State “nav--open” (Mobile) */
+/*    Ketika tombol diklik, JS menambahkan class .nav--open pada <nav> */
+.nav.nav--open {
+  /* akan di-override di media query untuk display:block */
+}
+
+
+/* ===========================================================================
+   Hero Section (Revisi)
+   =========================================================================== */
+.hero {
+  padding: 4rem 0 2rem;
+  background: linear-gradient(135deg, #1B005F, #6B44DF);
+  overflow: hidden; /* agar lingkaran latar tidak memicu scroll horizontal */
+}
+
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;            /* Turunkan dari 2rem ke 1.5rem untuk jarak lebih rapat */
+}
+
+.hero-text {
+  flex: 1 1 350px;        /* Basis fleksibel 350px */
+  max-width: 500px;       /* Batasi lebar maksimal */
+  width: 100%;
+}
+
+.hero-text p:first-child {
+  color: #FFC43D;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+  margin: 0.5rem 0;
+  word-break: break-word;
+}
+
+.subtitle {
+  color: #DDD;
+  margin-bottom: 1rem;    /* Turunkan sedikit agar lebih rapat */
+}
+
+.hero-text h2 {
+  min-height: 2.5rem;     /* Jaga kursor animasi tidak memindahkan layout */
+}
+
+.hero-actions {
+  margin-top: 1rem;
+}
+
+/* CTA Buttons */
+.cta-button {
+  display: inline-block;
+  border-radius: 30px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  background: #FFC43D;
+  color: #FFF;
+  transition: 0.3s;
+  font-size: 0.9rem;
+}
+
+.cta-button:hover {
+  background: #eab308;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid #FFC43D;
+  color: #FFC43D;
+  margin-left: 1rem;
+}
+
+.btn-outline:hover {
+  background: #FFC43D;
+  color: #FFF;
+}
+
+
+/* ===========================================================================
+   Hero Image & Animasi Lingkaran
+   =========================================================================== */
+.hero-image {
+  position: relative;
+  flex: 1 1 250px;
+  max-width: 300px;       /* Turunkan dari 350px ke 300px */
+  width: 100%;
+  margin: 0 auto;
+}
+
+.image-bg-circle {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;  /* Default desktop */
+  height: 300px; /* Default desktop */
+  background: rgba(107, 68, 223, 0.2);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.hero-image img {
+  display: block;
+  position: relative;
+  z-index: 2;
+  width: 80%;             /* Naikkan dari 70% ke 80% agar gambar lebih besar */
+  max-width: 240px;       /* Batasi sedikit di bawah 250px */
+  height: auto;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto;
+}
+
+.award-badge,
+.clients-badge {
+  position: absolute;
+  background:  #6B44DF;
+  color: #FFF;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  z-index: 3;
+}
+
+.award-badge {
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.clients-badge {
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.hero-image::before,
+.hero-image::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* Skala awal: 80% lebar/tinggi elemen .hero-image */
+  width: 80%;
+  height: 80%;
+  /* Kotak tanpa border-radius */
+  border-radius: 0;
+  border: 2px solid rgba(107, 68, 223, 0.484);
+  z-index: 0;
+  animation: square-anim-small 8s ease-in-out infinite;
+  transform: translate(-50%, -50%) scale(0); /* scale di-keyframes yang mengontrol tampilannya */
+}
+
+.hero-image::after {
+  /* Layer kedua: 120% dari 80% = 96% sebenarnya, tapi kita set langsung 120% dari container */
+  width: 120%;
+  height: 120%;
+  animation-duration: 15s;
+}
+
+@keyframes square-anim-small {
+  0% {
+    transform: translate(-50%, -50%) scale(0.4);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.4);
+    opacity: 1;
+  }
+}
+
+
+/* ===========================================================================
+   About Section
+   =========================================================================== */
+.about-section {
+  background: linear-gradient(135deg, #1B005F, #6B44DF);
+  color: white;
+  padding: 4rem 2rem;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.about-container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.about-summary h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  border-bottom: 3px solid #FFC43D;
+  padding-bottom: 0.3rem;
+  color: #FFC43D;
+}
+
+.about-summary p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  color: white;
+  text-align: center;
+}
+
+/* ===========================================================================
+   Odoo Modules Section
+   =========================================================================== */
+
+.odoo-modules-section {
+  padding: 40px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.carousel-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel {
+  position: relative;
+}
+
+.carousel-slide {
+  display: none;
+  transition: all 0.4s ease;
+  text-align: center;
+}
+
+.carousel-slide.active {
+  display: block;
+}
+
+.module-images {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 10px
+}
+
+.module-images img {
+  width: 700px;
+  height: 300px;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.module-images img:hover {
+  transform: scale(1.05);
+}
+
+/* Tombol panah kiri kanan */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(50, 50, 50, 0.6);
+  border: none;
+  color: white;
+  font-size: 32px;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.3s ease;
+  z-index: 10;
+}
+
+.carousel-btn:hover {
+  background-color: rgba(50, 50, 50, 0.9);
+}
+
+.carousel-btn.prev {
+  left: 5px;
+}
+
+.carousel-btn.next {
+  right: 5px;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.modal.show {
+  display: flex;
+}
+
+.close {
+  position: absolute;
+  top: 20px; right: 30px;
+  font-size: 40px;
+  color: #fff;
+  cursor: pointer;
+}
+
+
+/* ===========================================================================
+   Interest Section
+   =========================================================================== */
+.interest-section {
+  color: #FFF;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2rem;
+  color: #FFC43D;
+  margin-bottom: 2rem;
+}
+
+.interest-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.interest-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.interest-item {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.interest-item:hover {
+  transform: translateY(-5px);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.interest-item i {
+  color: #FFC43D;
+  margin-bottom: 1rem;
+}
+
+.interest-item h3 {
+  font-size: 1.2rem;
+  color: #FFF;
+  margin-bottom: 0.5rem;
+}
+
+.interest-item p {
+  font-size: 0.95rem;
+  color: #EEE;
+}
+
+/* Soft Skills Section */
+.soft-skills h3 {
+  font-size: 2rem;
+  color: #FFC43D;
+  margin-bottom: 1rem;
+}
+
+.soft-skills ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  color: #FFF;
+}
+
+.soft-skills ul li {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 1rem;
+}
+
+/* ===========================================================================
+   Skills Section
+   =========================================================================== */
+.skills {
+  padding: 4rem 1rem;
+  background: linear-gradient(135deg, #6B44DF, #FFC43D);
+}
+
+.skills h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #1B005F;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+
+.skill-card {
+  background: #1B005F;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 140px;
+}
+
+.skill-card i {
+  color: #6B44DF;
+  margin-bottom: 10px;
+}
+
+.skill-card p {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* ===========================================================================
+   Footer
+   =========================================================================== */
+.footer {
+  background: #1B005F;
+  color: #FFF;
+  padding: 2rem 1rem 1rem;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.footer-about,
+.footer-social,
+.footer-contact {
+  flex: 1 1 250px;
+}
+
+.footer h4 {
+  color: #FFC43D;
+  margin-bottom: 1rem;
+}
+
+.footer-social a {
+  font-size: 1.5rem;
+  color: #FFF;
+  margin-right: 1rem;
+}
+
+.footer-social a:hover {
+  color: #FFC43D;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 1rem;
+  color: #CCC;
+}
+
+
+/* ===========================================================================
+   Responsive Breakpoints
+   =========================================================================== */
+
+/* 1. Tablet ke bawah (≤ 992px)
+   - Hero men‐stack, jarak diperkecil, ukuran gambar mengecil */
+@media (max-width: 992px) {
+  .hero-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;           /* Lebih rapat saat stacked */
+  }
+  .hero-text {
+    max-width: 100%;     /* Penuhi lebar container */
+    margin-bottom: 1rem; /* Jarak vertikal antara teks dan gambar */
+  }
+  .hero-image {
+    max-width: 250px;    /* Ukuran gambar lebih kecil */
+  }
+  .image-bg-circle {
+    width: 250px;
+    height: 250px;
+  }
+  /* Sedikit kurangi jarak menu di tablet */
+  .nav ul {
+    gap: 1.5rem;
+  }
+}
+
+/* 2. Mobile besar hingga sedang (≤ 768px)
+   - Tampilkan tombol hamburger, sembunyikan menu desktop
+   - Ketika .nav--open, munculkan menu vertikal full-width */
+@media (max-width: 768px) {
+  /* Tombol hamburger muncul */
+  .nav-toggle {
+    display: block;
+  }
+
+  /* Sembunyikan <nav> default (desktop) */
+  .nav {
+    display: none;
+  }
+
+  /* Jika .nav--open ditambahkan, munculkan dropdown menu */
+  .nav.nav--open {
+    display: block;
+    position: absolute; /* drop-down di dalam .nav-container */
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #1B005F;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 11;
+  }
+
+  /* Style <ul> di dalam .nav--open */
+  .nav.nav--open ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0;                /* gunakan padding di <a> */
+    padding: 0.5rem 0;     /* ruang atas-bawah */
+  }
+  .nav.nav--open ul li a {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    display: block;
+  }
+  .nav.nav--open ul li:last-child a {
+    border-bottom: none;
+  }
+
+  /* Perbaikan Hero di mobile */
+  .hero-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;          /* Jarak sangat rapat di mobile */
+  }
+  .hero-text {
+    margin-bottom: 0.75rem;
+  }
+  .hero-text h1 {
+    font-size: 2.5rem;
+  }
+  .image-bg-circle {
+    width: 200px;
+    height: 200px;
+  }
+  .hero-image {
+    max-width: 200px;
+  }
+  .hero-image img {
+    max-width: 180px;
+  }
+}
+
+/* 3. Mobile sangat kecil (≤ 480px)
+   - Penyesuaian tambahan untuk ukuran sangat kecil */
+@media (max-width: 480px) {
+  .hero-container {
+    gap: 0.5rem;           /* Jarak paling rapat di layar sangat kecil */
+  }
+  .hero-text h1 {
+    font-size: 2.2rem;
+  }
+  .subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+  }
+  .image-bg-circle {
+    width: 150px;
+    height: 150px;
+  }
+  .hero-image {
+    max-width: 180px;
+  }
+  .hero-image img {
+    max-width: 150px;
+  }
+
+  .hero-actions .cta-button {
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
+  }
+  .hero-actions .btn-outline {
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
+    margin-left: 0.5rem;
+  }
+
+  /* (Optional) Jika ingin sesuaikan spacing menu mobile lebih kecil */
+  .nav.nav--open ul li a {
+    padding: 0.65rem 0.8rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* 1. Tablet ke bawah (≤ 992px) */
+@media (max-width: 992px) {
+  .about-section {
+    padding: 3rem 1.5rem;         /* Kurangi padding vertikal dan horizontal */
+  }
+  .about-container {
+    max-width: 90%;              /* Lebar container hampir penuh untuk tablet */
+  }
+  .about-summary h2 {
+    font-size: 1.8rem;            /* Sedikit dikecilkan agar proporsional */
+    margin-bottom: 0.8rem;
+  }
+  .about-summary p {
+    font-size: 1rem;              /* Dikecilkan sedikit agar muat */
+    line-height: 1.5;
+    margin-bottom: 1.2rem;
+  }
+}
+
+/* 2. Mobile besar hingga sedang (≤ 768px) */
+@media (max-width: 768px) {
+  .about-section {
+    padding: 2.5rem 1rem;          /* Lebih ringkas untuk layar menengah */
+  }
+  .about-container {
+    max-width: 100%;              /* Maksimal lebar sesuai layar */
+  }
+  .about-summary h2 {
+    font-size: 1.6rem;            /* Ukuran judul diperkecil lagi */
+    margin-bottom: 0.6rem;
+  }
+  .about-summary p {
+    font-size: 0.95rem;           /* Ukuran paragraf disesuaikan */
+    line-height: 1.4;
+    margin-bottom: 1rem;
+    padding: 0 0.5rem;            /* Sedikit padding samping agar teks tidak menempel */
+  }
+}
+
+/* 3. Mobile sangat kecil (≤ 480px) */
+@media (max-width: 480px) {
+  .about-section {
+    padding: 2rem 0.75rem;         /* Padding minimal di kiri-kanan */
+  }
+  .about-summary h2 {
+    font-size: 1.4rem;             /* Judul disesuaikan untuk layar sangat kecil */
+    margin-bottom: 0.5rem;
+  }
+  .about-summary p {
+    font-size: 0.9rem;             /* Paragraf diperkecil agar nyaman dibaca */
+    line-height: 1.3;
+    margin-bottom: 0.8rem;
+    padding: 0 0.25rem;            /* Lebih sempit lagi padding samping */
+  }
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .interest-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .interest-item h3 {
+    font-size: 1.1rem;
+  }
+
+  .interest-item p {
+    font-size: 0.85rem;
+  }
+
+  .soft-skills h3 {
+    font-size: 1.5rem;
+  }
+
+  .soft-skills ul {
+    gap: 0.75rem;
+  }
+
+  .soft-skills ul li {
+    font-size: 0.95rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .interest-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .interest-item {
+    padding: 1rem;
+  }
+
+  .interest-item i {
+    font-size: 1.5rem;
+  }
+
+  .soft-skills h3 {
+    font-size: 1.3rem;
+  }
+
+  .soft-skills ul li {
+    font-size: 0.9rem;
+    padding: 0.35rem 0.7rem;
+  }
+}
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1.5rem;
+}
+
+/* 2. Tablet ke bawah hingga ≤ 768px (3–4 kolom) */
+@media (max-width: 768px) {
+  .skills-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+  }
+  .skills h2 {
+    font-size: 1.8rem;     /* Sesuaikan ukuran judul */
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  .skill-card i {
+    font-size: 1.75rem;    /* Sedikit dikecilkan agar proporsional */
+  }
+  .skill-card p {
+    font-size: 0.95rem;
+  }
+}
+
+/* 3. Mobile sangat kecil ≤ 480px (2 kolom; bisa diubah ke 3 jika diinginkan) */
+@media (max-width: 480px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  .skills h2 {
+    font-size: 1.6rem;
+  }
+  .skill-card {
+    padding: 0.75rem;
+  }
+  .skill-card i {
+    font-size: 1.5rem;
+  }
+  .skill-card p {
+    font-size: 0.85rem;
+  }
+}
+
+/* 1. Tablet ke bawah (≤ 992px) */
+@media (max-width: 992px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;    /* Agar semua kolom berada di tengah */
+    text-align: center;     /* Teks di dalam setiap kolom rata tengah */
+    gap: 1.5rem;            /* Agak dikecilkan jaraknya */
+  }
+  .footer-about,
+  .footer-social,
+  .footer-contact {
+    flex: 1 1 100%;         /* Supaya masing-masing mengambil 100% lebar container */
+  }
+  .footer-social a {
+    margin: 0 0.75rem;      /* Sesuaikan jarak ikon */
+  }
+}
+
+/* 2. Mobile besar hingga sedang (≤ 768px) */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;              /* Jarak kolom lebih rapat */
+    padding: 1.5rem 1rem;   /* Kurangi padding vertikal */
+  }
+  .footer-about,
+  .footer-social,
+  .footer-contact {
+    flex: 1 1 100%;
+  }
+  .footer h4 {
+    font-size: 1.1rem;      /* Sesuaikan ukuran judul agar tidak terlalu besar */
+    margin-bottom: 0.75rem;
+  }
+  .footer p,
+  .footer-social a,
+  .footer-contact p {
+    font-size: 0.9rem;      /* Ukuran font sedikit dikecilkan */
+  }
+  .footer-social a {
+    font-size: 1.25rem;     /* Ukuran ikon sedikit dikecilkan */
+    margin: 0 0.5rem;
+  }
+}
+
+/* 3. Mobile sangat kecil (≤ 480px) */
+@media (max-width: 480px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.75rem;           /* Jarak kolom paling rapat */
+    padding: 1rem 0.5rem;   /* Padding lebih kecil di kiri-kanan */
+  }
+  .footer h4 {
+    font-size: 1rem;        /* Lebih ringkas untuk layar kecil */
+    margin-bottom: 0.5rem;
+  }
+  .footer p,
+  .footer-social a,
+  .footer-contact p {
+    font-size: 0.85rem;
+  }
+  .footer-social a {
+    font-size: 1.1rem;
+    margin: 0 0.4rem;
+  }
+  .footer-contact p {
+    margin: 0.25rem 0;      /* Kurangi jarak antar baris teks */
+  }
+  .footer-about p {
+    margin-bottom: 0.5rem;  /* Kurangi jarak paragraf */
+  }
+}
+
+@media (max-width: 768px) {
+  .module-images {
+    flex-wrap: wrap;  /* baru di sini gambar boleh wrap turun baris */
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .module-images img {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+  }
+
+  .carousel-btn {
+    font-size: 28px;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .module-images {
+    gap: 10px;
+  }
+
+  .carousel-btn.prev {
+    left: 2px;
+  }
+
+  .carousel-btn.next {
+    right: 2px;
+  }
+
+  .carousel-btn {
+    font-size: 24px;
+    width: 36px;
+    height: 36px;
+  }
+}
